@@ -1,115 +1,74 @@
+ML-based Loan Approval Prediction using MySQL, Power BI, Python & AWS Cloud
 
-Financial institutions struggle to assess creditworthiness of gig workers due to inconsistent income patterns. This project uses alternative indicators to build a loan approval prediction model.
+ Overview
+This end-to-end project focuses on predicting loan approvals for gig economy workers (such as Uber Drivers, Pizza Delivery & Freelancers) using real-world datasets and multiple cloud and analytics technologies. The objective is to develop a smart credit evaluation system that can help FinTechs and NBFCs make data-driven lending decisions in real time.
 
----
+Problem Statement
+Goal: Predict whether a loan application will be approved based on applicant profiles, credit scores, behavioral signals, and location data.
 
-## 📊 Dataset Overview
+Define Key Business Questions
+To make our analytics meaningful, we should aim to answer questions like:
+•	What is the distribution of credit scores among loan applicants?
+•	How does credit score affect loan approval rates or loan amounts?
+•	Are there regional or time-based patterns in high-risk applicants?
+•	What's the average loan amount by risk category (Safe, Moderate, High Risk)?
 
-We merged two datasets:
+This project involves:
+•	Advanced data analysis using MySQL (AWS RDS) and Python (Colab)
+•	 Visual interactive dashboard using Power BI
+•	Predictive modeling using Machine Learning
+•	 Cloud deployment using AWS S3 + SageMaker
 
-- `loan_applications.csv` — info on loan requests, approval status
-- `credit_scores.csv` — behavioral and financial credit scores of applicants
+Target Users: FinTech startups, digital lenders, and gig worker-focused NBFCs looking to reduce loan risk and optimize approval processes.
+Technologies Used
 
----
+1.	MySQL (AWS RDS) | Data storage, joins, schema creation, SQL queries 
+2.	Power BI | Building visual dashboards & risk heatmaps   
+3.	Python (Colab) | EDA, Feature Engineering, Model Training
+4.	Pandas, Scikit-learn | Data processing & ML modeling         
+5.	AWS S3| Model storage (.joblib & .tar.gz)         
+6.	AWS SageMaker| Model deployment and endpoint creation       
 
-## 🛠️ Tools & Tech Used
 
-- Python
-- Pandas, NumPy
-- Scikit-learn
-- Matplotlib & Seaborn
-- AWS RDS & SageMaker 
-- Power BI (for visualizations)
+Workflow Summary
 
-# 🏦 FinTech Project: Loan Approval Prediction for Gig Workers
+1.  Data Ingestion & Schema Creation (MySQL via AWS RDS)
+- Created tables: `loan_applications`, `credit_scores`
+- Normalized structure with foreign keys
+ 2. SQL Queries & Data Analysis
+- Performed joins to enrich loan applications with credit history
+- Aggregated credit scores by location and loan status
+- Created views for Power BI connection
+3. Power BI Visualization
+- Imported SQL views into Power BI
+- Built dashboards:
+  -  Approval rate by city
+  -  High-risk score by worker profile
+  - Loan amount distribution
 
-🎯 **Objective:** Use data analytics and machine learning to predict loan approval outcomes for gig workers using financial, behavioral, and credit-based indicators.
+4.  Machine Learning in Python
+- Cleaned and preprocessed data in Colab
+- Feature selection using correlation analysis
+- Trained a Logistic Regression model
+- Achieved ~86% accuracy in predicting approvals
 
----
+5. AWS Integration
+- Saved model using `joblib` and uploaded to S3
+- Created `.tar.gz` archive for SageMaker
+- Deployed model to AWS SageMaker endpoint
+- Future-ready for real-time scoring via REST API
 
-## 📌 Business Context
+Key Learnings & Outcomes
 
-Gig workers form a rising customer segment for FinTech lenders, but traditional credit scoring often fails to evaluate their risk effectively. This project builds an **ML-driven Early Warning System (EWS)** to assist FinTech firms in assessing loan eligibility using non-traditional metrics.
+- Integrated SQL + Python + AWS in a production-style pipeline
+- Performed credit risk analysis for gig economy workers
+- Created a deployable ML model using SageMaker
+- Built executive-ready dashboards in Power BI
 
----
 
-## 🗂️ Project Structure
+Future Improvements
 
-```bash
-fintech-loan-approval-ml/
-├── README.md
-├── data/
-│   ├── loan_applications.csv
-│   └── credit_scores.csv
-├── notebooks/
-│   └── EDA_and_Modeling.ipynb
-├── scripts/
-│   ├── data_cleaning.py
-│   ├── model_training.py
-│   └── utils.py
-├── visuals/
-│   └── PowerBI_dashboard.pbix
-├── requirements.txt
-└── aws/
-    ├── rds_connection.py
-    └── config.env
-
-💽 Data Sources
-loan_applications: Application ID, worker ID, loan amount, status, date, city
-
-credit_scores: Credit score metrics, behavioral score, financial activity
-
-worker_profiles (planned): Worker demographics & geographic risk
-
-Tools & Technologies Used
-Area	Tools / Platforms
-Data Handling	Python, Pandas, NumPy
-Database	MySQL (via AWS RDS)
-Data Viz	Power BI, Seaborn, Matplotlib
-ML Models	Scikit-learn (Logistic Regression, RF)
-Cloud Integration	AWS RDS (connected via SQLAlchemy + pymysql)
-IDEs	Google Colab, VS Code
-
-Exploratory Data Analysis (EDA)
-Connected MySQL tables via AWS RDS using foreign keys
-
-Performed missing value analysis, correlation heatmaps
-
-Identified:
-
-Credit score has highest influence on loan approval
-
-Riskier cities showed lower approval likelihood
-
-Loan amount range often influences rejection
-
- Machine Learning Modeling
-Step	Description
-Target Variable	loan_status (Approved / Rejected)
-Algorithms Tried	Logistic Regression, Random Forest, XGBoost
-Best Model	Random Forest Classifier — 87% Accuracy
-Evaluation Metrics	Accuracy, Confusion Matrix, AUC-ROC Curve
-
- Power BI Dashboard (FinTech View)
-Loan approval trend over time
-
-City-wise default risk heatmap
-
-Credit Score Distribution
-
-Application Status Breakdown
-
-Filter by:
-
-Worker ID
-
-Application Status
-
-Credit Score Range
-
-Results & Key Insights
-Gig workers with high behavioral scores were 3x more likely to be approved.
-
-Majority of rejections were clustered around low-income and Tier-3 cities.
-
-Data-driven Early Warning System (EWS) flags high-risk applicants in real-time.
+- Integrate geospatial data for deeper location risk profiling
+- Real-time API integration for live scoring from mobile apps
+- Add XGBoost and AutoML pipelines for higher performance
+- Full CI/CD pipeline on GitHub Actions
