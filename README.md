@@ -72,3 +72,12 @@ Future Improvements
 - Real-time API integration for live scoring from mobile apps
 - Add XGBoost and AutoML pipelines for higher performance
 - Full CI/CD pipeline on GitHub Actions
+
+
+Screenshots: 
+
+<img width="1118" height="637" alt="Power BI Dashboard" src="https://github.com/user-attachments/assets/c7ac3ed3-7f08-44f5-999e-3b7d1578bd3c" />
+
+
+
+
