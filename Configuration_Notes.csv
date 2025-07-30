@@ -1,0 +1,9 @@
+Configration:
+
+AWS Cloud 
+
+	1. S3 Bucket Name: sagemaker-ap-south-1-583739868510
+	2. ARN: aws:s3:::sagemaker-ap-south-1-583739868510
+	3. S3 URI: s3://sagemaker-ap-south-1-583739868510/loan-model/loan_model.joblib
+
+https://sagemaker-ap-south-1-583739868510.s3.ap-south-1.amazonaws.com/loan-model/loan_model.joblib
